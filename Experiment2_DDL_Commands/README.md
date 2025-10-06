@@ -6,7 +6,7 @@ To study and implement DDL commands and different types of constraints.
 ## THEORY
 
 ### 1. CREATE
-Used to create a new relation (table).
+Used to create a new relation (table)
 
 **Syntax:**
 ```sql
@@ -105,123 +105,178 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+<img width="1218" height="334" alt="image" src="https://github.com/user-attachments/assets/7256c461-7cd3-4e31-a272-0ec9dba1e09d" />
+
+
 
 ```sql
--- Paste your SQL code below for Question 1
+Create table ProjectAssignments(
+AssignmentID  int primary key,
+EmployeeID int,
+ProjectID int,
+AssignmentDate DATE NOT NULL,
+foreign key(EmployeeID) references Employees(EmployeeID)
+foreign key(ProjectID) references Projects(ProjectID));
+
 ```
 
 **Output:**
+<img width="1197" height="307" alt="image" src="https://github.com/user-attachments/assets/968287bb-84c9-4290-8b48-539f58b19c5c" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+<img width="1083" height="255" alt="image" src="https://github.com/user-attachments/assets/14afbf6c-5671-47b7-ad5d-647a93cb5b27" />
+
 
 ```sql
--- Paste your SQL code below for Question 2
+insert into Products(ProductID   ,Name ,   Category ,  Price,  Stock )
+values(101 , 'Laptop' , 'Electronics' ,1500,   50 );
 ```
 
 **Output:**
+<img width="1217" height="316" alt="image" src="https://github.com/user-attachments/assets/317e0c11-2cd2-4258-88a1-9093e53e1458" />
 
-![Output2](output.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+<img width="1186" height="500" alt="image" src="https://github.com/user-attachments/assets/96835d39-3042-4683-bfb8-d6a825f0f8a9" />
+
 
 ```sql
--- Paste your SQL code below for Question 3
+alter table employee add column department_id INTEGER;
+alter table employee add column manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1225" height="375" alt="image" src="https://github.com/user-attachments/assets/caf639de-ae0e-4cf9-a83a-5e7c7371ea9f" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+<img width="1049" height="397" alt="image" src="https://github.com/user-attachments/assets/b3a54461-4ad2-4943-96e0-c9dc71166b78" />
+
 
 ```sql
--- Paste your SQL code below for Question 4
+alter table Student_details add column Date_of_birth  Date ;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1208" height="369" alt="image" src="https://github.com/user-attachments/assets/1e542fb8-7304-4e9a-ae4c-46dd6f8479ce" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+<img width="998" height="463" alt="image" src="https://github.com/user-attachments/assets/a0f5de18-d9f0-48f5-9558-51fbe5f46d4f" />
+
 
 ```sql
--- Paste your SQL code below for Question 5
+create table Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT); 
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1209" height="441" alt="image" src="https://github.com/user-attachments/assets/02cfef70-4fc3-4ba7-aa7b-c445341543ab" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+<img width="782" height="362" alt="image" src="https://github.com/user-attachments/assets/165752ca-f450-4cb4-b76f-d1ab6546499e" />
+
 
 ```sql
--- Paste your SQL code below for Question 6
+insert into Products(ProductID ,ProductName,Price,Stock )
+select ProductID ,ProductName,Price,Stock 
+from Discontinued_products;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1196" height="322" alt="image" src="https://github.com/user-attachments/assets/b5819656-7d11-438c-b0c3-354166bf6842" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+<img width="1228" height="550" alt="image" src="https://github.com/user-attachments/assets/8c6dd346-64e7-4821-bad1-2dcc95a15093" />
+
 
 ```sql
--- Paste your SQL code below for Question 7
+create table products(
+product_id INTEGER primary key,
+product_name TEXT not NULL,
+list_price DECIMAL (10, 2) not NULL,
+discount DECIMAL (10, 2)  default 0  not NULL,
+check(list_price>=discount and discount>=0 and list_price>=0));
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1207" height="329" alt="image" src="https://github.com/user-attachments/assets/558b373a-1e6d-4a0a-a477-0eccd963cbd9" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+<img width="1220" height="516" alt="image" src="https://github.com/user-attachments/assets/eb6fbe30-9c74-4ed7-b976-29a6c7dcced7" />
+
 
 ```sql
--- Paste your SQL code below for Question 8
+insert into Employee(EmployeeID , Name ,Position , Department, Salary )
+values(5, 'George Clark',  'Consultant', null,null),(7  ,'Noah Davis'  ,'Manager' ,'HR', 60000),(8 , 'Ava Miller', 'Consultant',  'IT',null); 
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1213" height="333" alt="image" src="https://github.com/user-attachments/assets/13d46323-93ec-47a2-9261-cbc81695498b" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+
 
 ```sql
--- Paste your SQL code below for Question 9
+create table item(
+item_id TEXT primary key,
+item_desc TEXT not null,
+rate INTEGER not null,
+icom_id TEXT check(length(icom_id)=4),
+foreign key(icom_id) references company(com_id) 
+On update cascade
+On delete cascade
+);
+
 ```
 
 **Output:**
 
-![Output9](output.png)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+<img width="1224" height="449" alt="image" src="https://github.com/user-attachments/assets/33d0dfbf-5c3c-458a-a1ce-7022857d69fc" />
+
 
 ```sql
--- Paste your SQL code below for Question 10
+create table contacts(
+contact_id INTEGER  primary key,
+first_name  TEXT  not NULL,
+last_name TEXT not null,
+email TEXT,
+phone text not null check(length(phone)>=10));
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1217" height="382" alt="image" src="https://github.com/user-attachments/assets/34c629e3-85d1-43a2-861d-e6e749326d4f" />
+
+
+## Module Examination (SEB)
+<img width="1104" height="72" alt="image" src="https://github.com/user-attachments/assets/80fd53d9-ea37-4d81-83a7-82d84d62a633" />
 
 
 ## RESULT
