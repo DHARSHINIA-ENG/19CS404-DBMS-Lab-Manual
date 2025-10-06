@@ -7,7 +7,6 @@ To understand and apply ER modeling concepts by creating ER diagrams for real-wo
 Gain hands-on experience in designing ER diagrams that represent database structure including entities, relationships, attributes, and constraints.
 
 ---
-
 # Scenario A: City Fitness Club Management
 
 **Business Context:**  
@@ -27,26 +26,38 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| **Entity**     | **Attributes**                                      | **Notes**                                                   |
+| -------------- | --------------------------------------------------- | ----------------------------------------------------------- |
+| **Member**     | **Member_ID (PK)**, Name, MembershipType, StartDate | Each member can join multiple programs and make payments.   |
+| **Program**    | **Trainer_ID (PK)**, Name                           | A program is conducted by trainers and attended by members. |
+| **Attendance** | **Attendance_ID (PK)**, Date/Time (assumed)         | Acts as a bridge between Member, Program, and Payment.      |
+| **Payment**    | **Payment_ID (PK)**, MembershipFee, SessionFee      | Tracks payments made for attendance or membership.          |
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| **Relationship**                      | **Cardinality**                         | **Participation**    | **Notes**                                                                       |
+| ------------------------------------- | --------------------------------------- | -------------------- | ------------------------------------------------------------------------------- |
+| Member **joins** Program              | 1:N (Member to Attendance), N:M overall | Partial on both      | Many members can join many programs. Attendance works as an associative entity. |
+| Attendance **is booked by** Member    | 1:N (Member → Attendance)               | Total for Attendance | Each attendance record belongs to one member.                                   |
+| Attendance **is tracked for** Program | 1:N (Program → Attendance)              | Total for Attendance | Each attendance is connected to one program/trainer.                            |
+| Attendance **records** Payment        | 1:N (Payment → Attendance)              | Optional             | A payment can cover multiple attendance records OR be per session.              |
+
 
 ### Assumptions
-- 
-- 
-- 
+- One member can join many programs.
+
+- A program can have many members.
+
+- Attendance is used to link Member and Program (bridge entity).
+
+- Each attendance may have an associated payment.
+
+- Each payment can include membership or session fees.
+
+- Trainer_ID is treated as the primary key of Program.
+
+- Date/time of attendance is assumed but not shown.
+
 
 ---
 
