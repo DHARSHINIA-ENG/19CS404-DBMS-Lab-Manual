@@ -6,7 +6,7 @@ To study and implement aggregate functions, GROUP BY, and HAVING clause with sui
 ## THEORY
 
 ### Aggregate Functions
-These perform calculations on a set of values and return a single value.
+These perform calculations on a set of values and return a single value..
 
 - **MIN()** – Smallest value  
 - **MAX()** – Largest value  
@@ -38,123 +38,164 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+<img width="991" height="635" alt="Screenshot 2025-10-27 132131" src="https://github.com/user-attachments/assets/e2a656ee-b233-4f4c-a7d9-5363c598fc26" />
+
 
 ```sql
--- Paste your SQL code below for Question 1
+select Medication ,AVG(Dosage) as "AvgDosage"
+from Prescriptions
+group by Medication;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="776" height="756" alt="image" src="https://github.com/user-attachments/assets/83ace68c-b9a1-4891-a35b-d5e2e094d235" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+<img width="1031" height="652" alt="image" src="https://github.com/user-attachments/assets/54c33c08-1847-4b52-a7e5-4caadfe03494" />
+
 
 ```sql
--- Paste your SQL code below for Question 2
+select InsuranceCompany, count(*) as 'TotalExpiredPatients'
+from Insurance
+GROUP BY InsuranceCompany ;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="911" height="751" alt="image" src="https://github.com/user-attachments/assets/bb6ef183-19e4-4a89-be03-0a47878b9534" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+<img width="609" height="615" alt="image" src="https://github.com/user-attachments/assets/d968bacb-a3f0-4fda-9f2e-45e13580a6e0" />
+
 
 ```sql
--- Paste your SQL code below for Question 3
+select PatientID, count(*) as TotalAppointments
+from  Appointments
+Group by PatientID
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="767" height="710" alt="image" src="https://github.com/user-attachments/assets/874b1aec-4771-4cc7-b083-a6174067a985" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+<img width="1081" height="482" alt="image" src="https://github.com/user-attachments/assets/8dfffb4a-a266-4adb-8907-fa0e904d048e" />
+
 
 ```sql
--- Paste your SQL code below for Question 4
+select count(distinct age) as COUNT
+FROM employee
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="601" height="412" alt="image" src="https://github.com/user-attachments/assets/6b163539-6a13-43f6-884c-3557c38cbf9b" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+<img width="756" height="563" alt="image" src="https://github.com/user-attachments/assets/f78878d2-3a3d-4315-8980-5f04b4d089ff" />
+
 
 ```sql
--- Paste your SQL code below for Question 5
+select name as fruit_name, min(inventory) as lowest_quantity
+from fruits
+
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="766" height="413" alt="image" src="https://github.com/user-attachments/assets/4d059021-729b-4329-96e5-1e3be79d67ad" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+<img width="731" height="498" alt="image" src="https://github.com/user-attachments/assets/e31ea40f-e09c-44f2-904b-4da55048b17e" />
+
 
 ```sql
--- Paste your SQL code below for Question 6
+
+select name,email, min(length(email)) as min_email_length
+from customer
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1048" height="407" alt="image" src="https://github.com/user-attachments/assets/49ae2adc-96f2-4f8b-a80d-4772c5f56735" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+<img width="1036" height="474" alt="image" src="https://github.com/user-attachments/assets/9220e88c-a479-4fb1-b901-dafc0df64734" />
+
 
 ```sql
--- Paste your SQL code below for Question 7
+select max(age)-min(age) as age_difference
+from employee
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="538" height="368" alt="image" src="https://github.com/user-attachments/assets/7522411a-403b-4285-9ee3-5d9cb630f988" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+<img width="1197" height="467" alt="image" src="https://github.com/user-attachments/assets/0bbf3b61-a4bb-4ad8-b217-e24d42c51026" />
+
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT jdate, AVG(workhour)
+from employee1
+group by jdate
+having avg(workhour) < 10;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="698" height="416" alt="image" src="https://github.com/user-attachments/assets/a2413029-8ced-44c8-be30-f70edbeeb390" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+<img width="1218" height="490" alt="image" src="https://github.com/user-attachments/assets/f9336b08-fecb-44c6-8952-df4537bebd87" />
+
 
 ```sql
--- Paste your SQL code below for Question 9
+select (age/5)*5 as 'age_group',sum(salary) as 'SUM(salary)'
+from customer1
+group by (age/5)*5
+having sum(salary)>5000
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="776" height="452" alt="image" src="https://github.com/user-attachments/assets/3af430e9-1c31-40d3-975c-fb6131444a4c" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+<img width="1132" height="527" alt="image" src="https://github.com/user-attachments/assets/322ccb9a-52cb-4b98-a2b4-119aed0f4434" />
+
 
 ```sql
--- Paste your SQL code below for Question 10
+select address,SUM(salary) as 'SUM(salary)'
+from customer1
+group by address
+having SUM(salary) > 2000
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="673" height="564" alt="image" src="https://github.com/user-attachments/assets/9c8dd302-5f95-4c9a-98b0-31d042b32605" />
+
 
 
 ## RESULT
